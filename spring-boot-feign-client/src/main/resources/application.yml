@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: client
+ 
+server:
+  port: 8002
+  
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    metadata-map:
+        instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+
+endpoints:
+  restart:
+    enabled: true
