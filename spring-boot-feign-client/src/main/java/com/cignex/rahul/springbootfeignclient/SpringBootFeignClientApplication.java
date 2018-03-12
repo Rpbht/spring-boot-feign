@@ -29,9 +29,9 @@ public class SpringBootFeignClientApplication {
 		return client.fromService();
 	}
 
-	@FeignClient("service")
+	@FeignClient("http://service")
 	interface Client {
-		@GetMapping
+		@GetMapping(value="/fromService")
 		String fromService();
 	}
 }
